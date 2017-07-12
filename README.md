@@ -17,18 +17,30 @@ Segue então os passos para implementação do projeto:
   
   “CreateClientsTable” no arquivo: “create_clients_table.php”:
 
-Schema::create('clients', function (Blueprint $table) {
-  public function up(){
+  Schema::create('clients', function (Blueprint $table) {
+    
+    public function up(){
+    
     $table->increment(“id”);      
+    
     $table->string(“name”);
+    
     $table->string(“responsible”);
+    
     $table->string(“email”);
+    
     $table->string(“phone”);
+    
     $table->text(“address”);
+    
     $table->text(“obs”);
+    
     $table->timestamps();
+  
   }
+
 }
+
 6.	php artisan migrate
 
 7.	(Brincar com Tinker)
@@ -39,22 +51,30 @@ Schema::create('clients', function (Blueprint $table) {
 
 9.	Definir uma nova Factory no arquivo: ModelFactory.php
 
-$factory->define(App\Client::class, function (Faker\Generator $faker) {
-    return [
-        'name' => $faker->name,
-        'responsible' => $faker->name,
-        'email' => $faker->safeEmail,
-        'phone' => $faker->phoneNumber,
-        'address' => $faker->address,
-        'obs'	=> $faker->sentence,
+    $factory->define(App\Client::class, function (Faker\Generator $faker) {
+    
+    return [    
+      'name' => $faker->name,
+      
+      'responsible' => $faker->name,
+      
+      'email' => $faker->safeEmail,
+      
+      'phone' => $faker->phoneNumber,
+      
+      'address' => $faker->address,
+      
+      'obs'	=> $faker->sentence,
+    
     ];
+
 });
 
 10.	Criar o Seeder:
 
   php artisan make:seeder ClientTableSeeder
 
-No método run() da classe ClientTableSeeder:
+  No método run() da classe ClientTableSeeder:
 
    factory(\App\Client::class, 10)->create();
 
