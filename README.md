@@ -47,7 +47,9 @@ $factory->define(App\Client::class, function (Faker\Generator $faker) {
 });
 
 10.	Criar o Seeder:
+
 php artisan make:seeder ClientTableSeeder
+
 No método run() da classe ClientTableSeeder:
 \App\Client::truncate();
         factory(\App\Client::class, 10)->create();
@@ -58,36 +60,50 @@ No método run() da classe ClientTableSeeder:
       php artisan make:controller ClientController
   
   11.2.	 LISTAR TODOS OS CLIENTES:
+    
     11.2.1.	Configurar rotas (route.php)
         Route::get(‘/client’,’ClientController@index’);
+    
     11.2.2.	Implementar o método index(): 
         return response()->json(['clients'=>Client::all()]);
 
   11.3.	CRIAR UM NOVO CLIENTE:
+    
     11.3.1.	Configurar Rota: 
       Route::post(‘/client’,’ClientController@store’);    
+    
     11.3.2.	Implementar método store($request): 
       return response()->json(['client'=>Client::create($request->all())]);
+    
     11.3.3.	Configurar o CSRF:
       $middleware (tirar)
       $routeMiddleware (colocar)
       ‘csrf’ => \App\Http\Middleware\VerifyCsrfToken::class,
 
   11.4.	ATUALIZAR UM CLIENTE EXISTENTE:
-    11.4.1.	Configurar Rota: 
-      Route::put(‘/cliente/{id}’, ‘ClientController@update’);    
+    
+    11.4.1.	Configurar Rota:
+      Route::put(‘/cliente/{id}’, ‘ClientController@update’);
+      
     11.4.2.	Implementar o método update($request, $id): 
       $client = Client::find($id);
       $status = $client->update($request->all());
       return response()->json(['status'=>$status]);
 
   11.5	EXIBIR UM DETERMINADO CLIENTE:
-    11.5.1.	Configurar Rota: Route::get(‘/client/{id}’, ‘ClientController@show’);
-    11.5.2.	Implementar o método show($id): 
+   
+   11.5.1.	Configurar Rota: Route::get(‘/client/{id}’, ‘ClientController@show’);
+   
+   11.5.2.	Implementar o método show($id): 
     
   11.6.	EXCLUIR UM DETERMINADO CLIENTE:
-    11.6.1. Configurar Rota:Route::delete(‘/cliente/{id}’, ‘ClientController@destroy’);
-    11.6.2.	Implementar o método: destroy($id): (DELETAR UM DETERMINADO CLIENTE)
-    11.6.3.	$client = Client::find($id);
-    12.6.4.	$status = $client->delete();
-    12.6.5.	return response()->json(['status'=>$status]);
+   
+   11.6.1. Configurar Rota:Route::delete(‘/cliente/{id}’, ‘ClientController@destroy’);
+   
+   11.6.2.	Implementar o método: destroy($id): (DELETAR UM DETERMINADO CLIENTE)
+   
+   11.6.3.	$client = Client::find($id);
+   
+   12.6.4.	$status = $client->delete();
+   
+   12.6.5.	return response()->json(['status'=>$status]);
