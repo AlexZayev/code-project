@@ -7,39 +7,41 @@ Segue então os passos para implementação do projeto:
 
 1.	composer create-project laravel/laravel sysproject “5.1.*”
 
-2.	php artisan make:model Client –m
+2.	Criar o Model e a Migration:
+    
+    php artisan make:model Client –m
 
 3.	Configurar o arquivo .env => (DB_DATABASE, DB_USERNAME, DB_PASSWORD)
 
-4.	Criar database => (mysql –u root –p | create database sysproject)
+4.	Criar database: 
+    
+    mysql –u root –p | create database sysproject
 
 5.	Definir campos da tabela “Clients” na classe: 
   
-  “CreateClientsTable” no arquivo: “create_clients_table.php”:
+    “CreateClientsTable” no arquivo: “create_clients_table.php”:
 
-  Schema::create('clients', function (Blueprint $table) {
+      Schema::create('clients', function (Blueprint $table) {
     
-    public function up(){
+      public function up(){
     
-    $table->increment(“id”);      
+      $table->increment(“id”);      
     
-    $table->string(“name”);
+      $table->string(“name”);
     
-    $table->string(“responsible”);
+      $table->string(“responsible”);
     
-    $table->string(“email”);
+      $table->string(“email”);
     
-    $table->string(“phone”);
+      $table->string(“phone”);
     
-    $table->text(“address”);
+      $table->text(“address”);
     
-    $table->text(“obs”);
+      $table->text(“obs”);
     
-    $table->timestamps();
-  
-  }
-
-}
+      $table->timestamps();  
+    }
+   }
 
 6.	php artisan migrate
 
@@ -53,7 +55,8 @@ Segue então os passos para implementação do projeto:
 
     $factory->define(App\Client::class, function (Faker\Generator $faker) {
     
-    return [    
+    return [
+    
       'name' => $faker->name,
       
       'responsible' => $faker->name,
@@ -68,7 +71,7 @@ Segue então os passos para implementação do projeto:
     
     ];
 
-});
+    });
 
 10.	Criar o Seeder:
 
