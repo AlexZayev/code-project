@@ -100,7 +100,7 @@ No método run() da classe ClientTableSeeder:
    
    11.6.1. Configurar Rota:Route::delete(‘/cliente/{id}’, ‘ClientController@destroy’);
    
-   11.6.2.	Implementar o método: destroy($id): (DELETAR UM DETERMINADO CLIENTE)
+   11.6.2.	Implementar o método: destroy($id):
    
    11.6.3.	$client = Client::find($id);
    
