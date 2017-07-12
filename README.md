@@ -17,14 +17,14 @@ Segue então os passos para implementação do projeto:
 
 Schema::create('clients', function (Blueprint $table) {
   public function up(){
-      $table->increment(“id”);
-      $table->string(“name”);
-      $table->string(“responsible”);
-      $table->string(“email”);
-      $table->string(“phone”);
-      $table->text(“address”);
-      $table->text(“obs”);
-      $table->timestamps();
+    $table->increment(“id”);      
+    $table->string(“name”);
+    $table->string(“responsible”);
+    $table->string(“email”);
+    $table->string(“phone”);
+    $table->text(“address”);
+    $table->text(“obs”);
+    $table->timestamps();
   }
 }
 6.	php artisan migrate
