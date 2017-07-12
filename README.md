@@ -52,7 +52,8 @@ No método run() da classe ClientTableSeeder:
 \App\Client::truncate();
         factory(\App\Client::class, 10)->create();
 
-11.	MANIPULAR OS DADOS PELO POSTMAN:
+11.	MANIPULAR OS DADOS PELO POSTMAN (API RESTful):
+
   11.1.	Criar o Controller
       php artisan make:controller ClientController
   
